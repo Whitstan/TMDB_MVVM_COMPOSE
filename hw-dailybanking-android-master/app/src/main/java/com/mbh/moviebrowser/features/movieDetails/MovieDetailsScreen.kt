@@ -26,8 +26,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.mbh.moviebrowser.domain.movie.Movie
 
-const val COVER_URL_PREFIX = "https://image.tmdb.org/t/p/w500"
-
 @Composable
 fun MovieDetailsScreen(viewModel: MovieDetailsViewModel) {
     val movie by viewModel.movie.collectAsState(null)
@@ -59,7 +57,7 @@ fun MovieDetailsScreenUI(
     ) {
         Spacer(modifier = Modifier.height(16.dp))
         AsyncImage(
-            model = COVER_URL_PREFIX + movie.coverUrl,
+            model = movie.coverUrl,
             contentDescription = null,
             contentScale = ContentScale.Crop,
         )

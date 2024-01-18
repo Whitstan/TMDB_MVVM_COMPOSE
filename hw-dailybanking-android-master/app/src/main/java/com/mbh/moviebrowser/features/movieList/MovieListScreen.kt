@@ -28,8 +28,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.mbh.moviebrowser.domain.movie.Movie
 
-const val COVER_URL_PREFIX = "https://image.tmdb.org/t/p/w500"
-
 @Composable
 fun MovieListScreen(viewModel: MovieListViewModel, navController: NavController) {
     MovieListScreenUI(viewModel, navController)
@@ -68,7 +66,7 @@ private fun MovieListItem(
     ) {
         Box {
             AsyncImage(
-                model = COVER_URL_PREFIX + movie.coverUrl,
+                model = movie.coverUrl,
                 contentDescription = null,
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier

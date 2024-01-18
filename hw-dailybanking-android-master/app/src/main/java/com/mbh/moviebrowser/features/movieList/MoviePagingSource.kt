@@ -7,6 +7,8 @@ import com.mbh.moviebrowser.remote.api.TMDBRetrofitClient
 import com.mbh.moviebrowser.store.genre.GenreStore
 import com.mbh.moviebrowser.store.movie.MovieStore
 
+const val COVER_URL_PREFIX = "https://image.tmdb.org/t/p/w500"
+
 class MoviePagingSource(
     private val retrofitClient: TMDBRetrofitClient,
     private val genreStore: GenreStore,
@@ -36,7 +38,7 @@ class MoviePagingSource(
                     title = movieDTO.title,
                     genres = genres.joinToString { it.name },
                     overview = movieDTO.overview,
-                    coverUrl = movieDTO.posterPath,
+                    coverUrl = COVER_URL_PREFIX + movieDTO.posterPath,
                     rating = movieDTO.voteAverage,
                     isFavorite = movieStore.movies.value.find { it.id == movieDTO.id }?.isFavorite ?: false
                 )
